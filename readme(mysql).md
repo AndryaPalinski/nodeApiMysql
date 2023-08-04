@@ -1,10 +1,10 @@
-# /*CRIAR DATA BASE*/
+## /*CRIAR DATA BASE*/
 create database ecomerce;
-# /*MARCAR COMO 'PRINCIPAL'*/
+## /*MARCAR COMO 'PRINCIPAL'*/
 use ecomerce;
 
-##  /*------------------CRIAÇÃO--DE--TABELAS-------------------------------*/
-###  create table clients_ecomerce(
+# /*------------------CRIAÇÃO--DE--TABELAS-------------------------------*/
+create table clients_ecomerce(
 ID_CLIENT INT NOT NULL AUTO_INCREMENT,
     DS_NAME VARCHAR(255) NOT NULL,
     NM_CPF INT,
@@ -13,7 +13,7 @@ ID_CLIENT INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (ID_CLIENT)
 ); /*<-- Tabela de clients*/
 
-### create table products(
+create table products(
 ID_PRODUCT INT NOT NULL AUTO_INCREMENT,
     DS_NAME VARCHAR(120) NOT NULL,
     DS_DSCRIPTION VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ ID_PRODUCT INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (ID_PRODUCT)
 );/*<-- Tabela de produtos*/
 
-### create table carts(
+create table carts(
 ID_CART INT NOT NULL AUTO_INCREMENT,
 ID_CLIENT INT,
 ID_PRODUCT INT,    
@@ -37,14 +37,32 @@ SELECT * FROM clients_ecomerce;
 SELECT * FROM products;
 SELECT * FROM carts;
 
-## /*------------------Cadrastros------------------------------*/
+# /*------------------Cadrastros------------------------------*/
 
-## /*Inserir dados na tabela (CAMPOS A MAIS +ERRO+)*/
+## /*Inserir dados na tabela (CAMPOS A MAIS +ERRO+)*/ /*<--CLIENTES*/
+SELECT * FROM clients_ecomerce;
+
 INSERT INTO clients_ecomerce(DS_NAME, NM_CPF, FL_STATUS) 
-VALUES('Alan Rodrigues', 432678904, 'A'); 
-
-INSERT INTO products(DS_NAME, DS_DSCRIPTION,NS_VALUE, DS_BRAND, DS_STATUS) 
-VALUES('Violão','Instrumento de corda', 212.90, 'Canção Boa', 'A');
+VALUES('Sophia Schmidt', 445678904, 'A'); 
 
 INSERT INTO carts(ID_CLIENT, ID_PRODUCT) 
-VALUES(1, 1);
+VALUES(2, 2);
+
+DELETE FROM clients_ecomerce WHERE ID_CLIENT = ?;
+
+UPDATE clients_ecomerce SET DS_NAME = 'Alana Miranda', NM_CPF = 567456789, FL_STATUS = 'A' WHERE ID_CLIENT = 2;
+
+ 
+## /*Inserir dados na tabela (CAMPOS A MAIS +ERRO+)*/ /*PRODUTOS*/
+SELECT * FROM products;
+
+INSERT INTO products(DS_NAME, DS_DSCRIPTION,NS_VALUE, DS_BRAND, DS_STATUS) 
+VALUES(?, ?, ?, ?, ?);
+
+DELETE FROM products WHERE ID_CLIENT = ?;
+
+UPDATE products SET DS_NAME = ?, DS_DSCRIPTION = ?, NS_VALUE = ?, DS_BRAND = ?, FL_STATUS = ? WHERE ID_CLIENT = ?;
+
+## /*Renomear uma tabela*/
+/*alter table animals
+rename column ID_CLIENT to id_client;*/

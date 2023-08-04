@@ -13,6 +13,7 @@ password: process.env.DB_PWD,
 database: process.env.DB_NAME
 });
 
+
 export default {
     connection
 }
